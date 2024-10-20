@@ -18,7 +18,10 @@ export const CustomThemeProvider: FC<CustomThemeProps> = ({ children }) => {
         main: "#5c7d29", //green
         contrastText: "#000000" //text black
       },
-      
+      info: {
+        main: "#f7f7df", //container beige
+        contrastText: "#f59331", //text orange
+      }
 
     },
   });
@@ -33,6 +36,10 @@ export const CustomThemeProvider: FC<CustomThemeProps> = ({ children }) => {
         main: "#1e1752", //blue
         contrastText: "#ffffff" //text white
       },
+      info: {
+        main: "#3c2366", //container purple
+        contrastText: "#e3d9fc", //text light purple
+      }
     },
   });
   const [theme, setTheme] = useState<Theme>(lightTheme);

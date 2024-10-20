@@ -1,6 +1,9 @@
+import { useTheme } from "@mui/material";
 import "../style.css";
 
 function DownloadPage() {
+  const theme = useTheme();
+  
   return (
     <div>
       <div className="genericContainer">
@@ -9,7 +12,7 @@ function DownloadPage() {
           The game is still undergoing development, you can get what's made of
           the game by now on GitHub.
         </p>
-        <a href="https://github.com/DrYonatan/DanganronpaArmy">
+        <a href="https://github.com/DrYonatan/DanganronpaArmy" style={{ color: theme.palette.secondary.contrastText }}>
           Get The Game From GitHub
         </a>
         <p></p>

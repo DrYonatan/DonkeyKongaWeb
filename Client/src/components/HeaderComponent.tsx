@@ -10,7 +10,7 @@ function HeaderComponent() {
   return (
     <div className="headerComponent">
       <Button onClick={changeTheme}>
-      <ContrastIcon />
+      <ContrastIcon style={{color:"white"}}/>
       </Button>
       {pages
         .filter((page) => page.shown)

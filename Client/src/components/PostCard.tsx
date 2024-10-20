@@ -24,7 +24,7 @@ function PostCard(postProps: PostProps) {
           <img src=""></img>
           <span>{postProps.username}</span>
           <h1>{postProps.title}</h1>
-          <span>{postProps.content}</span>
+          <div>{postProps.content}</div>
 
           <img
             style={{

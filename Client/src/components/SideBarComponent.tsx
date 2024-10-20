@@ -14,7 +14,7 @@ const drawerWidth = 240;
 export default function SideBarComponent() {
   const theme = useTheme();
   return (
-    <div className="sideBar">
+    <div>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -43,7 +43,7 @@ export default function SideBarComponent() {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {["All mail", "Trash", "Spam"].map((text) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon></ListItemIcon>
