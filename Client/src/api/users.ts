@@ -7,10 +7,10 @@ const addUser = async (user: User) => {
     const response = await fetch(`${serverIP}`, {
       method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify( user ),
+      body: JSON.stringify(user),
     });
 
     if (!response.ok) {
@@ -22,4 +22,23 @@ const addUser = async (user: User) => {
   }
 };
 
-export { addUser };
+const findUserByUsernameAndPassword = async (
+  username: string,
+  password: string
+) => {
+  try {
+    const response = await fetch(`${serverIP}/user/${username}/${password}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    console.log("working here");
+    console.log(response);
+    const user = await response.json();
+    
+    return user;
+  } catch (error) {
+    console.log("Error fetching user: " + error);
+  }
+};
+
+export { addUser, findUserByUsernameAndPassword };

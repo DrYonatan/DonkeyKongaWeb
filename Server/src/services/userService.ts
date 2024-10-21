@@ -10,8 +10,19 @@ const getAllUsers = async (): Promise<User[]> => {
   return users;
 };
 
+const getUserByUsernameAndPassword = async (
+  username: string,
+  password: string
+): Promise<User> => {
+  const user: User = await userRepository.findOneBy({
+    username: username,
+    password: password,
+  });
+  return user;
+};
+
 const addUser = async (user: User): Promise<void> => {
   await userRepository.save(user);
 };
 
-export { getAllUsers, addUser };
+export { getAllUsers, addUser, getUserByUsernameAndPassword };

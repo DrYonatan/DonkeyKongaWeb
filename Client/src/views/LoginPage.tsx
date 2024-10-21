@@ -2,6 +2,7 @@ import "../style.css";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
 import { useContext, useState } from "react";
+import { findUserByUsernameAndPassword } from "../api/users";
 
 
 function LoginPage() {
@@ -17,13 +18,15 @@ function LoginPage() {
     setPassword(password);
   };
 
-  const logIn = () => {
-    
+  const logIn = async () => {
+    findUserByUsernameAndPassword(username, password).then((data) => {
+      alert(data);
+    });
   }
 
   return (
     <div>
-      <form className="genericContainer">
+      <form className="genericContainer" onSubmit={logIn}>
         <h2>Username</h2>
       <input
           required
@@ -46,7 +49,7 @@ function LoginPage() {
         </Link>
 
         <br />
-        <button type="submit" className="submitButton">
+        <button type="button" className="submitButton" onClick={logIn}>
           Submit
         </button>
         <img
