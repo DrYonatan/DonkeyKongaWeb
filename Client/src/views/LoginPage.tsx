@@ -1,12 +1,13 @@
 import "../style.css";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
-import { useContext, useState } from "react";
-import { findUserByUsernameAndPassword } from "../api/users";
+import { useState } from "react";
+import { useUserContext } from "../contexts/userContext/userContext";
 
 
 function LoginPage() {
   const theme = useTheme();
+  const { logIn } = useUserContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,15 +19,13 @@ function LoginPage() {
     setPassword(password);
   };
 
-  const logIn = async () => {
-    findUserByUsernameAndPassword(username, password).then((data) => {
-      alert(data);
-    });
+  const submitUser = async () => {
+     logIn(username, password);
   }
 
   return (
     <div>
-      <form className="genericContainer" onSubmit={logIn}>
+      <form className="genericContainer" onSubmit={submitUser}>
         <h2>Username</h2>
       <input
           required
@@ -49,7 +48,7 @@ function LoginPage() {
         </Link>
 
         <br />
-        <button type="button" className="submitButton" onClick={logIn}>
+        <button type="button" className="submitButton" onClick={submitUser}>
           Submit
         </button>
         <img

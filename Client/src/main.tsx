@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { CustomThemeProvider } from './contexts/customThemeContext/customThemeProvider';
+import { UserProvider } from './contexts/userContext/userProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    <UserProvider>
     <CustomThemeProvider>
     <App />
     </CustomThemeProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 
