@@ -48,9 +48,11 @@ function LoginPage() {
         </Link>
 
         <br />
+        <Link to="/">
         <button type="button" className="submitButton" onClick={submitUser}>
           Submit
         </button>
+        </Link>
         <img
           src="https://cdn-icons-png.flaticon.com/512/579/579703.png"
           style={{ width: "200px", margin: "50px" }}

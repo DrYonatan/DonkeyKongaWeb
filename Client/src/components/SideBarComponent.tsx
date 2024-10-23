@@ -33,7 +33,7 @@ export default function SideBarComponent() {
         <Toolbar />
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
+          {["Upload", "Notifications", "History", "Your Page"].map((text) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemText primary={text} />

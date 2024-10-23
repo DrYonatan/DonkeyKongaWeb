@@ -3,13 +3,13 @@ import { sonicImage } from "../assets/images";
 
 function AboutPage() {
   return (
-    <div>
+    <div style={{display: "flex", justifyContent: "space-around"}}>
       <div className="creatorContainer">
         <img src={sonicImage} style={{ height: "300px" }}></img>
         <p>"Never say Alma in Japanese, worst mistake of my life."</p>
         <p>-DrYonatan</p>
       </div>
-      <div className="genericContainer">
+      <div className="genericContainer" style={{marginLeft: "200px"}}>
         <h1>About The Game</h1>
         <p>
           Danganronpa Army is a game made by Tal Agin, AKA DrYonatan, and it's

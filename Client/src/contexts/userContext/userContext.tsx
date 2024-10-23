@@ -2,8 +2,9 @@ import { createContext, useContext } from "react";
 import { User } from "../../types/user";
 
 interface UserContext {
-  user: User;
+  user: User | null;
   logIn: (username: string, password: string) => void;
+  logOut: () => void;
 }
 
 const UserContext = createContext<UserContext| undefined>(undefined);

@@ -3,13 +3,13 @@ import { useUserContext } from "../contexts/userContext/userContext";
 import "../style.css";
 
 function HomePage() {
-  const user = useUserContext();
+  const {user} = useUserContext();
 
   return (
     <div>
       <div className="mainBlock">
         <div className="text-fadeIn">
-          <h1>Welcome {user.user.username} to the Super Army Level Website</h1>
+          <h1>Welcome {user?.username} to the Super Army Level Website</h1>
         </div>
         <img src={mainImage} className="mainImage" />
       </div>

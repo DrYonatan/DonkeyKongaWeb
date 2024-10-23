@@ -4,12 +4,10 @@ import "./style.css";
 import { pages } from "./routes";
 import { ThemeProvider } from "@mui/material";
 import { useCustomThemeContext } from "./contexts/customThemeContext/customThemeContext";
-import  { useUserContext } from "./contexts/userContext/userContext";
-import { UserProvider } from "./contexts/userContext/userProvider";
+
 
 function App() {
   const { theme } = useCustomThemeContext();
-  const { user } = useUserContext();
 
   return (
     <div>

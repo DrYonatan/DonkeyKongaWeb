@@ -3,25 +3,27 @@ import { User } from "../../types/user";
 import UserContext from "./userContext";
 import { findUserByUsernameAndPassword } from "../../api/users";
 
-
 interface UserProps {
   children: JSX.Element | JSX.Element[];
 }
 
 export const UserProvider: FC<UserProps> = ({ children }) => {
- 
-  const defaultUser: User = {username: "", password: ""};
 
-  const [user, setUser] = useState<User>(defaultUser);
+  const [user, setUser] = useState<User | null>(null);
 
   const logIn = (username: string, password: string) => {
     findUserByUsernameAndPassword(username, password).then((data) => {
-      setUser(data)
+      if (data) setUser(data);
+      else alert("User doesn't exist!");
     });
   };
 
+  const logOut = () => {
+    setUser(null);
+  }
+
   return (
-    <UserContext.Provider value={{ user, logIn }}>
+    <UserContext.Provider value={{ user, logIn, logOut }}>
       {children}
     </UserContext.Provider>
   );

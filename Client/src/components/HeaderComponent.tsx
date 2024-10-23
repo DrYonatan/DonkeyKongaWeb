@@ -4,22 +4,32 @@ import { pages } from "../routes";
 import ContrastIcon from "@mui/icons-material/Contrast";
 import { Button } from "@mui/material";
 import { useCustomThemeContext } from "../contexts/customThemeContext/customThemeContext";
+import { useUserContext } from "../contexts/userContext/userContext";
 
 function HeaderComponent() {
-  const {changeTheme} = useCustomThemeContext();
+  const { changeTheme } = useCustomThemeContext();
+  const { user } = useUserContext();
+  const { logOut } = useUserContext();
+
   return (
     <div className="headerComponent">
       <Button onClick={changeTheme}>
-      <ContrastIcon style={{color:"white"}}/>
+        <ContrastIcon style={{ color: "white" }} />
       </Button>
       {pages
         .filter((page) => page.shown)
         .map((page) => {
-          return (
-            <Link to={page.path} className="headerLink">
-              {page.pageName}
-            </Link>
-          );
+          if (page.pageName != "Login" || !user) {
+            return (
+              <Link to={page.path} className="headerLink">
+                {page.pageName}
+              </Link>
+            );
+          }
+          else {
+            return <Link to="" className="headerLink" onClick={logOut}>Logout</Link>
+          }
+
         })}
       <img
         style={{
