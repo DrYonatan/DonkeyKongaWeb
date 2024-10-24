@@ -4,6 +4,7 @@ import ForumPage from "../views/ForumsPage";
 import LoginPage from "../views/LoginPage";
 import AboutPage from "../views/AboutPage";
 import SignUpPage from "../views/SignUpPage";
+import ProfilePage from "../views/ProfilePage";
 
 interface Page {
   pageName: string;
@@ -24,5 +25,6 @@ export const pages: Page[] = [
   { pageName: "Login", path: "/login", element: <LoginPage />, shown: true },
   { pageName: "About", path: "/about", element: <AboutPage />, shown: true },
   { pageName: "SignUp", path: "/signup", element: <SignUpPage />, shown: false },
+  { pageName: "Profile", path: "/profile", element: <ProfilePage />, shown: false}
 
 ];

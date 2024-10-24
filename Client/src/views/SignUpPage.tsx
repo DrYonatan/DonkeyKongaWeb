@@ -11,7 +11,7 @@ function SignUpPage() {
   const [password, setPassword] = useState("");
 
   const submitUser = async () => {
-    const user: User = { username, password };
+    const user: User = { username: username, password: password, profilepic: "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"};
     await addUser(user);
   };
 
@@ -49,7 +49,7 @@ function SignUpPage() {
         </Link>
 
         <br />
-        <button type="submit" className="submitButton">
+        <button type="button" className="submitButton" onClick={submitUser}>
           Submit
         </button>
       </form>

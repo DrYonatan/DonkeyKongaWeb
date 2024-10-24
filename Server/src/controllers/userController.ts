@@ -1,5 +1,5 @@
 import { User } from "../entities/user";
-import { getAllUsers, addUser, getUserByUsernameAndPassword } from "../services/userService";
+import { getAllUsers, addUser, getUserByUsernameAndPassword, changeUserDetails } from "../services/userService";
 
 const getAllUsersHandler = async () => {
   const users: User[] = await getAllUsers();
@@ -15,4 +15,8 @@ const addUserHandler = async (user: User) => {
   await addUser(user);
 };
 
-export { getAllUsersHandler, addUserHandler, getUserByUsernameAndPasswordHandler };
+const changeUserDetailsHandler = async (userId: number, username: string, password: string, profilepic: string) => { 
+  await changeUserDetails(userId, username, password, profilepic);
+};
+
+export { getAllUsersHandler, addUserHandler, getUserByUsernameAndPasswordHandler, changeUserDetailsHandler };

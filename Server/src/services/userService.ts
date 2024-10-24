@@ -25,4 +25,8 @@ const addUser = async (user: User): Promise<void> => {
   await userRepository.save(user);
 };
 
-export { getAllUsers, addUser, getUserByUsernameAndPassword };
+const changeUserDetails = async (userId: number, username: string, password: string, profilepic: string): Promise<void> => {
+  await userRepository.update(userId, {username: username, password: password, profilepic: profilepic});
+}
+
+export { getAllUsers, addUser, getUserByUsernameAndPassword, changeUserDetails };

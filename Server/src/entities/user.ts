@@ -12,6 +12,9 @@ export class User {
   @Column({type: "text"})
   password: string;
 
+  @Column({type: "text"})
+  profilepic: string;
+
   @OneToMany(() => Post, (post: Post) => post.poster)
   posts: Post[];
 }

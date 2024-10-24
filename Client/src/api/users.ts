@@ -22,6 +22,31 @@ const addUser = async (user: User) => {
   }
 };
 
+const changeUserDetails = async (
+  userId: number | undefined,
+  username: string | undefined,
+  password: string | undefined,
+  profilepic: string | undefined
+) => {
+  try {
+    const response = await fetch(`${serverIP}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId, username, password, profilepic }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    console.log(response);
+  } catch (error) {
+    console.error("Error creating user:", error);
+  }
+};
+
 const findUserByUsernameAndPassword = async (
   username: string,
   password: string
@@ -34,11 +59,11 @@ const findUserByUsernameAndPassword = async (
     console.log("working here");
     console.log(response);
     const user = await response.json();
-    
+
     return user;
   } catch (error) {
     console.log("Error fetching user: " + error);
   }
 };
 
-export { addUser, findUserByUsernameAndPassword };
+export { addUser, findUserByUsernameAndPassword, changeUserDetails };

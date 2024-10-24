@@ -25,20 +25,24 @@ function HeaderComponent() {
                 {page.pageName}
               </Link>
             );
+          } else {
+            return (
+              <Link to="" className="headerLink" onClick={logOut}>
+                Logout
+              </Link>
+            );
           }
-          else {
-            return <Link to="" className="headerLink" onClick={logOut}>Logout</Link>
-          }
-
         })}
-      <img
-        style={{
-          width: "50px",
-          height: "50px",
-          borderRadius: "100%",
-        }}
-        src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
-      />
+      <Link to={user ? "/profile" : "/login"}>
+        <img
+          style={{
+            width: "50px",
+            height: "50px",
+            borderRadius: "100%",
+          }}
+          src={user ? user.profilepic : "https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg"}
+        />
+      </Link>
     </div>
   );
 }
