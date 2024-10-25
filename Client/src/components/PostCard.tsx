@@ -1,12 +1,14 @@
 import { useTheme } from "@mui/material";
 import "../style.css";
 import { Skeleton, Card } from "@mui/material";
+import { User } from "../types/user";
 
 type PostProps = {
-  username: string;
+  poster: User;
   title: string;
   content: string;
   imgSrc: string;
+  date: Date;
 };
 
 function PostCard(postProps: PostProps) {
@@ -21,10 +23,27 @@ function PostCard(postProps: PostProps) {
           }}
           className="postCard"
         >
-          <img src=""></img>
-          <span>{postProps.username}</span>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginRight: "20px",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <img
+                style={{ height: "30px", width: "30px", borderRadius: "100%" }}
+                src={postProps.poster.profilepic}
+              ></img>
+              <span>{postProps.poster.username}</span>
+            </div>
+            <span style={{ alignSelf: "flex-end" }}>
+              {JSON.stringify(postProps.date).replace(/\"/g, "")}
+            </span>
+          </div>
+
           <h1>{postProps.title}</h1>
-          <div>{postProps.content}</div>
+          <div style={{ width: "780px" }}>{postProps.content}</div>
 
           <img
             style={{

@@ -14,7 +14,6 @@ export const useUserContext = () => {
   if (context === undefined) {
     throw new Error("useUserContext must be used within a UserContext");
   }
-  console.log(context);
   return context;
 };
 

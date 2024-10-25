@@ -21,10 +21,11 @@ function ForumPage() {
         {posts?.map((post) => {
           return (
             <PostCard
-            username={post.poster.username}
+            poster={post.poster}
             title={post.title}
             content={post.content}
             imgSrc={post.image}
+            date={post.date}
              />
 
           );

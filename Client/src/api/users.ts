@@ -66,4 +66,19 @@ const findUserByUsernameAndPassword = async (
   }
 };
 
-export { addUser, findUserByUsernameAndPassword, changeUserDetails };
+const findUserById = async (userId: number) => {
+  try {
+    const response = await fetch(`${serverIP}/user/${userId}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    console.log(response);
+    const user = await response.json();
+
+    return user;
+  } catch (error) {
+    console.log("Error fetching user: " + error);
+  }
+};
+
+export { addUser, findUserByUsernameAndPassword, changeUserDetails, findUserById };

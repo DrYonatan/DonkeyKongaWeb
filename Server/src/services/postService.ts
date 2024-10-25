@@ -1,7 +1,6 @@
 import { Repository } from "typeorm";
 import dataSource from "../connection/datasource";
 import { Post } from "../entities/post";
-import { User } from "@/entities/user";
 
 const postRepository = dataSource.getRepository(Post);
 
@@ -12,7 +11,8 @@ const getAllPosts = async (): Promise<Post[]> => {
 };
 
 const uploadPost = async (post: Post): Promise<void> => {
-  await postRepository.create(post);
+  console.log(post);
+  await postRepository.save(post);
 }
 
 export { getAllPosts, uploadPost };

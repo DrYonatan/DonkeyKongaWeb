@@ -8,8 +8,17 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import "../style.css";
 import { useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
+
+const sideBarLinks = [
+  { name: "Feed", path: "/forums"},
+  { name: "Upload", path: "/forums/upload" },
+  { name: "Notifications", path: "/forums/notifications" },
+  { name: "History", path: "/forums/history" },
+  { name: "Your Page", path: "/forums/userpage" },
+];
 
 export default function SideBarComponent() {
   const theme = useTheme();
@@ -33,12 +42,14 @@ export default function SideBarComponent() {
         <Toolbar />
         <Divider />
         <List>
-          {["Upload", "Notifications", "History", "Your Page"].map((text) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
+          {sideBarLinks.map((page) => (
+            <Link to={page.path} style={{textDecoration: "none", color: theme.palette.secondary.contrastText}}>
+              <ListItem key={page.name} disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={page.name} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
           ))}
         </List>
         <Divider />

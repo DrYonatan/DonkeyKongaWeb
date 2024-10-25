@@ -21,12 +21,34 @@ const getUserByUsernameAndPassword = async (
   return user;
 };
 
+const getUserById = async (id: number) => {
+  const user: User = await userRepository.findOneBy({
+    id: id,
+  });
+  return user;
+};
+
 const addUser = async (user: User): Promise<void> => {
   await userRepository.save(user);
 };
 
-const changeUserDetails = async (userId: number, username: string, password: string, profilepic: string): Promise<void> => {
-  await userRepository.update(userId, {username: username, password: password, profilepic: profilepic});
-}
+const changeUserDetails = async (
+  userId: number,
+  username: string,
+  password: string,
+  profilepic: string
+): Promise<void> => {
+  await userRepository.update(userId, {
+    username: username,
+    password: password,
+    profilepic: profilepic,
+  });
+};
 
-export { getAllUsers, addUser, getUserByUsernameAndPassword, changeUserDetails };
+export {
+  getAllUsers,
+  addUser,
+  getUserByUsernameAndPassword,
+  changeUserDetails,
+  getUserById,
+};

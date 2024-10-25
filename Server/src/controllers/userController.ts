@@ -1,22 +1,47 @@
 import { User } from "../entities/user";
-import { getAllUsers, addUser, getUserByUsernameAndPassword, changeUserDetails } from "../services/userService";
+import {
+  getAllUsers,
+  addUser,
+  getUserByUsernameAndPassword,
+  changeUserDetails,
+  getUserById,
+} from "../services/userService";
 
 const getAllUsersHandler = async () => {
   const users: User[] = await getAllUsers();
   return users;
 };
 
-const getUserByUsernameAndPasswordHandler = async (username: string, password: string) => {
+const getUserByUsernameAndPasswordHandler = async (
+  username: string,
+  password: string
+) => {
   const user: User = await getUserByUsernameAndPassword(username, password);
   return user;
-}
+};
+
+const getUserByIdHandler = async (id: number) => {
+  const user: User = await getUserById(id);
+  return user;
+};
 
 const addUserHandler = async (user: User) => {
   await addUser(user);
 };
 
-const changeUserDetailsHandler = async (userId: number, username: string, password: string, profilepic: string) => { 
+const changeUserDetailsHandler = async (
+  userId: number,
+  username: string,
+  password: string,
+  profilepic: string
+) => {
   await changeUserDetails(userId, username, password, profilepic);
 };
 
-export { getAllUsersHandler, addUserHandler, getUserByUsernameAndPasswordHandler, changeUserDetailsHandler };
+export {
+  getAllUsersHandler,
+  addUserHandler,
+  getUserByUsernameAndPasswordHandler,
+  changeUserDetailsHandler,
+  getUserByIdHandler,
+};

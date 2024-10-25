@@ -22,6 +22,10 @@ const uploadPost = async (post: Post) => {
   try {
     const response = await fetch(`${serverIP}`, {
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ post }),
     });
 
@@ -29,9 +33,6 @@ const uploadPost = async (post: Post) => {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     console.log(response);
-    const posts = await response.json();
-    console.log(posts);
-    return posts;
   } catch (error) {
     console.error("Error fetching posts:", error);
     throw error; // Optionally re-throw the error if you want to handle it later

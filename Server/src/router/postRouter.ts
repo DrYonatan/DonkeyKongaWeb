@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("", async (req: Request, res: Response) => {
   const posts = await getAllPostsHandler();
-  res.status(200).send(posts);
+  res.status(200).send(posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()));
 });
 
 router.post("", async (req: Request, res: Response) => {
