@@ -2,6 +2,7 @@ import { User } from "@/entities/user";
 import { DataSource } from "typeorm";
 import pg from "pg";
 import { Post } from "@/entities/post";
+import { PostComment } from "@/entities/comment";
 
 const dataSource = new DataSource({
   type: "postgres",
@@ -10,7 +11,7 @@ const dataSource = new DataSource({
   username: "postgres",
   password: "postgres",
   database: "postgres",
-  entities: [User, Post],
+  entities: [User, Post, PostComment],
   synchronize: false,
   logging: false,
   driver: pg,

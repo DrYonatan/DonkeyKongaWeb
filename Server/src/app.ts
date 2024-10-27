@@ -3,6 +3,7 @@ import userRouter from "./router/userRouter";
 import 'reflect-metadata';
 import dataSource  from "./connection/datasource";
 import postRouter from "./router/postRouter";
+import commentRouter from "./router/commentRouter";
 import cors from "cors";
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(cors({
 app.use(express.json());
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
+app.use("/comments", commentRouter);
 
 const port = 3000;
 

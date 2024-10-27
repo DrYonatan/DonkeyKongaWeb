@@ -4,6 +4,7 @@ import PostCard from "../components/PostCard";
 import { useParams } from "react-router-dom";
 import { findPostById } from "../api/posts";
 import { useEffect, useState } from "react";
+import { Card, Skeleton } from "@mui/material";
 
 function PostCommentsPage() {
   const [post, setPost] = useState({
@@ -28,13 +29,17 @@ function PostCommentsPage() {
     <div style={{ display: "flex", flexDirection: "column" }}>
       <SideBarComponent />
       <div className="postListContainer">
-        <PostCard
+        {post ? <PostCard
           poster={post.poster}
           title={post.title}
           content={post.content}
           imgSrc={post.image}
           date={post.date}
-        />
+        /> :  <Card className="postCard">
+        {" "}
+        <Skeleton variant="rectangular" width={760} height={50} />
+        <Skeleton variant="rectangular" width={760} height={200} />
+      </Card>}
       </div>
     </div>
   );
