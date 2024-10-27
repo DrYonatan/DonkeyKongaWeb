@@ -18,7 +18,7 @@ export class Post {
   @Column({ type: "text" })
   image: string;
 
-  @ManyToOne(() => User, (user: User) => user.posts, {eager: true})
+  @ManyToOne(() => User, (user: User) => user.posts, {eager: true, nullable: false})
   @JoinColumn({name: "poster_id"})
   poster: User;
 }

@@ -26,7 +26,7 @@ const uploadPost = async (post: Post) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ post }),
+      body: JSON.stringify(post),
     });
 
     if (!response.ok) {
