@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import {
   addUserHandler,
   getAllUsersHandler,
+  getUserByIdHandler,
   getUserByUsernameAndPasswordHandler,
 } from "../controllers/userController";
 import { User } from "@/entities/user";
@@ -22,9 +23,9 @@ router.get(`/user/:username/:password`, async (req: Request, res: Response) => {
   res.json(user);
 });
 
-router.get(`/user/:id`, async (req: Request, res: Response) => {
-  const id = req.params;
-  const user = await getUserById(id);
+router.get(`/:id`, async (req: Request, res: Response) => {
+  const id: number = req.params.id;
+  const user = await getUserByIdHandler(id);
   res.json(user);
 });
 

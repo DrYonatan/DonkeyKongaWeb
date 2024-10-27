@@ -1,13 +1,18 @@
 import { Post } from "../entities/post";
-import { getAllPosts, uploadPost } from "@/services/postService";
+import { getAllPosts, getPostById, uploadPost } from "@/services/postService";
 
 const getAllPostsHandler = async () => {
   const posts: Post[] = await getAllPosts();
   return posts;
 };
 
-const uploadPostHandler = async (post: Post) => {
-  await uploadPost(post);
+const getPostbyIdHandler = async (id: number) => {
+  const post: Post = await getPostById(id);
+  return post;
 }
 
-export { getAllPostsHandler, uploadPostHandler };
+const uploadPostHandler = async (post: Post) => {
+  await uploadPost(post);
+};
+
+export { getAllPostsHandler, uploadPostHandler, getPostbyIdHandler };

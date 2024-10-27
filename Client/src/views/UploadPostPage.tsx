@@ -147,6 +147,11 @@ function UploadPostPage() {
               },
             },
           }}
+          InputProps={{
+            style: {
+              color: theme.palette.secondary.contrastText,
+            },
+          }}
         />
       </Card>
     </div>

@@ -137,6 +137,11 @@ div {
   row-gap: 10px;
 }
 
+#postCard:hover {
+  filter: brightness(0.8);
+  transition: 0.2s;
+}
+
 .postListContainer {
   overflow-y: scroll;
   overflow-x: hidden;

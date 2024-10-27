@@ -10,7 +10,6 @@ const getAllPosts = async () => {
     }
     console.log(response);
     const posts = await response.json();
-    console.log(posts);
     return posts;
   } catch (error) {
     console.error("Error fetching posts:", error);
@@ -39,4 +38,18 @@ const uploadPost = async (post: Post) => {
   }
 };
 
-export { getAllPosts, uploadPost };
+const findPostById = async (postId: number) => {
+  try {
+    const response = await fetch(`${serverIP}/${postId}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+   console.log(response);
+    const post = await response.json();
+
+    return post;
+  } catch (error) {
+    console.log("Error fetching user: " + error);
+  }
+};
+export { getAllPosts, uploadPost, findPostById };

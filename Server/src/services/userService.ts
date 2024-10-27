@@ -21,7 +21,7 @@ const getUserByUsernameAndPassword = async (
   return user;
 };
 
-const getUserById = async (id: number) => {
+const getUserById = async (id: number): Promise<User> => {
   const user: User = await userRepository.findOneBy({
     id: id,
   });

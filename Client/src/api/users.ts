@@ -68,7 +68,7 @@ const findUserByUsernameAndPassword = async (
 
 const findUserById = async (userId: number) => {
   try {
-    const response = await fetch(`${serverIP}/user/${userId}`);
+    const response = await fetch(`${serverIP}/${userId}`);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
