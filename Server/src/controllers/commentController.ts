@@ -1,10 +1,9 @@
-import { PostComment } from "@/entities/comment"
+import { PostComment } from "@/entities/comment";
 import { Post } from "@/entities/post";
-import { getCommentsByPost } from "@/services/commentService"
+import { uploadComment } from "@/services/commentService";
 
-const getCommentsByPostHandler = async (post: Post) => {
-    const comments: PostComment[] = await getCommentsByPost(post);
-    return comments;
-}
+const uploadCommentHandler = async (comment: PostComment) => {
+  uploadComment(comment);
+};
 
-export { getCommentsByPostHandler };
+export { uploadCommentHandler };

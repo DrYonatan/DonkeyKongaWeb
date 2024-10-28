@@ -4,11 +4,13 @@ import PostCard from "../components/PostCard";
 import { useParams } from "react-router-dom";
 import { findPostById } from "../api/posts";
 import { useEffect, useState } from "react";
-import { Card, Skeleton } from "@mui/material";
+import { Card, Skeleton, TextField, Button } from "@mui/material";
 import { Post } from "../types/post";
 import { PostComment } from "../types/comment";
 import CommentComponent from "../components/CommentComponent";
 import { useTheme } from "@mui/material";
+import { uploadComment } from "../api/comment";
+import { useUserContext } from "../contexts/userContext/userContext";
 
 function PostCommentsPage() {
   const [post, setPost] = useState<Post>({
@@ -20,9 +22,13 @@ function PostCommentsPage() {
     comments: [],
   });
 
+  const { user } = useUserContext();
+
   const [comments, setComments] = useState<PostComment[]>();
 
   const { postId } = useParams();
+
+  const [comment, setComment] = useState("");
 
   const theme = useTheme();
 
@@ -35,7 +41,22 @@ function PostCommentsPage() {
         setComments(data.comments);
       } else alert("Post doesn't exist!");
     });
-  }, []);
+  }, [post]);
+
+  const onChangeComment = (comment: string) => {
+    setComment(comment);
+  };
+
+  const upload = () => {
+    if (user) {
+      uploadComment({
+        date: new Date(Date.now()),
+        commenter: user!,
+        content: comment,
+        post: post,
+      });
+    } else alert("Log in to comment!");
+  };
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -56,10 +77,35 @@ function PostCommentsPage() {
             <Skeleton variant="rectangular" width={760} height={200} />
           </Card>
         )}
-        <h1 style={{color: theme.palette.secondary.contrastText}}>Comments</h1>
-
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <h1 style={{ color: theme.palette.secondary.contrastText }}>
+            Comments
+          </h1>
+          <TextField
+            onChange={(e) => {
+              onChangeComment(e.target.value);
+            }}
+            InputProps={{
+              style: {
+                color: theme.palette.secondary.contrastText,
+                width: "800px",
+              },
+            }}
+            label="Write your comment"
+          />
+          <Button
+            variant="contained"
+            style={{
+              color: theme.palette.secondary.contrastText,
+              alignSelf: "flex-end",
+            }}
+            onClick={upload}
+          >
+            Comment
+          </Button>
+        </div>
         <div>
-          {comments ? comments.map((comment) => {
+          {comments?.map((comment) => {
             return (
               <CommentComponent
                 commenter={comment.commenter}
@@ -67,7 +113,7 @@ function PostCommentsPage() {
                 date={new Date(comment.date)}
               />
             );
-          }) : <h1>No Comments</h1>}
+          })}
         </div>
       </div>
     </div>
