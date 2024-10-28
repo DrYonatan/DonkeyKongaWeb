@@ -34,6 +34,7 @@ function UploadPostPage() {
         content: content,
         image: image,
         poster: user,
+        comments: [],
       };
       uploadPost(post);
     }

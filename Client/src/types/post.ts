@@ -1,4 +1,5 @@
 import { User } from "./user";
+import { PostComment } from "./comment";
 
 export interface Post {
   id?: number;
@@ -7,4 +8,5 @@ export interface Post {
   content: string;
   image: string;
   poster: User;
+  comments: PostComment[];
 }

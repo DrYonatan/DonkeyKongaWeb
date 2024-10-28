@@ -38,7 +38,7 @@ function PostCard(postProps: PostProps) {
               <span>{postProps.poster.username}</span>
             </div>
             <span style={{ alignSelf: "flex-end" }}>
-              {JSON.stringify(postProps.date).replace(/\"/g, "")}
+              {JSON.stringify(postProps.date.toLocaleDateString()).replace(/\"/g, "")}
             </span>
           </div>
 

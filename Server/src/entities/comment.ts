@@ -1,4 +1,11 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  Timestamp,
+} from "typeorm";
 import { User } from "./user";
 import { Post } from "./post";
 
@@ -13,11 +20,14 @@ export class PostComment {
   @Column({ type: "text" })
   content: string;
 
-  @ManyToOne(() => User, (user: User) => user.comments, {eager: true, nullable: false})
-  @JoinColumn({name: "commenter_id"})
+  @ManyToOne(() => User, (user: User) => user.comments, {
+    eager: true,
+    nullable: false,
+  })
+  @JoinColumn({ name: "commenter_id" })
   commenter: User;
 
-  @ManyToOne(() => Post, (post: Post) => post.comments, {eager: true, nullable: false})
-  @JoinColumn({name: "post_id"})
+  @ManyToOne(() => Post, (post: Post) => post.comments, { nullable: false })
+  @JoinColumn({ name: "post_id" })
   post: Post;
 }

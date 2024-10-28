@@ -27,7 +27,7 @@ function ForumPage() {
                 title={post.title}
                 content={post.content}
                 imgSrc={post.image}
-                date={post.date}
+                date={new Date(post.date)}
               />
             </Link>
           );

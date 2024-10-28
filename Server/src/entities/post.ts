@@ -23,6 +23,6 @@ export class Post {
   @JoinColumn({name: "poster_id"})
   poster: User;
 
-  @OneToMany(() => PostComment, (comment: PostComment) => comment.post)
+  @OneToMany(() => PostComment, (comment: PostComment) => comment.post, {eager: true})
   comments: PostComment[];
 }
