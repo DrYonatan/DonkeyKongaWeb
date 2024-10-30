@@ -55,6 +55,7 @@ function PostCommentsPage() {
         content: comment,
         post: post,
       });
+      setComment("");
     } else alert("Log in to comment!");
   };
 
@@ -92,6 +93,7 @@ function PostCommentsPage() {
               },
             }}
             label="Write your comment"
+            value={comment}
           />
           <Button
             variant="contained"
